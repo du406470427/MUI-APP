@@ -1,0 +1,383 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<title>Hello MUI</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+		<link rel="stylesheet" href="../css/mui.min.css">
+		<link rel="stylesheet" href="../css/mui.picker.min.css" />
+		<style>
+			html,
+			body {
+				background-color: #fff;
+			}
+			
+			.mui-title {
+				color: white;
+				font: bold 18px/ 45px "微软雅黑";
+			}
+			
+			.mui-bar-nav {
+				background-color: #0b84ff;
+			}
+			
+			.mui-return {
+				color: #fff;
+				font: bold 17px/ 45px "微软雅黑";
+				margin-left: -5px;
+			}
+			
+			.mui-bar .mui-icon {
+				padding-top: 0;
+			}
+			
+			.mui-bar-nav.mui-bar .mui-icon {
+				padding-left: 0;
+			}
+			
+			.mui-icon-left-nav {
+				color: white;
+			}
+			
+			.mui-card .mui-control-content {
+				padding: 10px;
+			}
+			
+			.radio_inline {
+				display: inline-block;
+				width: 100%;
+			}
+			
+			.radio_inline span {
+				width: 23%;
+				height: 41px;
+				display: inline-block;
+				color: #666;
+			}
+			
+			.radio_inline label {
+				padding-left: 15px;
+			}
+			
+			.mui-checkbox.mui-left label,
+			.mui-radio.mui-left label {
+				padding-left: 30px;
+				padding-top: 11px;
+				padding-right: 0;
+				white-space: nowrap;
+			}
+			
+			.mui-radio.mui-left input[type=radio] {
+				padding-top: 5px;
+				left: 0px;
+			}
+			
+			input[placeholder] {
+				font: bold 13px/20px "微软雅黑";
+			}
+			
+			h3 {
+				color: #0b84ff;
+				text-align: left;
+				text-indent: 15px;
+				font: bold 17px/30px "微软雅黑";
+			}
+			
+			.dir {
+				width: 94%;
+				height: 1px;
+				border-top: 1px solid #f2f2f2;
+				margin: 0 auto;
+				text-align: center;
+			}
+			
+			.mui-btn-block {
+				margin: 0 auto;
+				font-size: 18px;
+				display: block;
+				width: 95%;
+				margin-bottom: 10px;
+				padding: 5px 0;
+				margin-top: 25px;
+			}
+			
+			.mui-input-group .mui-input-row:after {
+				background: none;
+			}
+			
+			.mui-card {
+				box-shadow: 2px 2px 6px #daf0ff;
+				margin-bottom: 10px;
+				font-size: 13px;
+			}
+			
+			.mui-content {
+				width: 100%;
+				height: 100%;
+				margin-bottom: 25px;
+				background-color: #fff;
+			}
+		</style>
+	</head>
+
+	<body>
+
+		<header class="mui-bar mui-bar-nav">
+			<h1 class="mui-title">信息查询</h1>
+		</header>
+
+		<div class="mui-content mui-scroll-wrapper mui-draggable">
+			<div class="mui-card">
+				<form class="mui-input-group">
+					<h3>按基本信息</h3>
+					<div class="dir"></div>
+
+					<div class="mui-input-row">
+						<label>姓名</label>
+						<input type="text" placeholder="在这里输入姓名" maxlength="10">
+					</div>
+
+					<div class="dir"></div>
+
+					<div class="radio_inline">
+						<label>性别</label>
+						<span class="mui-radio mui-left" style="margin-left: 20%;">
+					<input type="radio" name="xingbie" id="nan" value="jianyu"/>
+					<label>男</label>
+				</span>
+						<span class="mui-radio mui-left">
+					<input type="radio" name="xingbie" id="nv" value="jianyu"/>
+					<label>女</label>
+				</span>
+					</div>
+
+					<div class="dir"></div>
+
+					<div class="mui-input-row">
+						<label>身份证号</label>
+						<input type="text" placeholder="在这里输入身份证号" maxlength="18">
+					</div>
+
+					<div class="dir"></div>
+
+					<div class="mui-input-row">
+						<label>入监日期</label>
+						<input type="text" id='result1' class="begin_time1" data-options='{"type":"date","beginYear":1949,"endYear":2050}' placeholder="单击选择入监日期" value="">
+						<div style="display: inline-block; float: right; margin-top: -35px; margin-left: 50%; margin-right: 20px; height: 30px;">
+							<button id="claer" style="height: 30px; border-color: #efefef;font: bold  12px/20px '微软雅黑'; color: #888;">清空</button>
+						</div>
+					</div>
+
+				</form>
+
+			</div>
+
+			<div class="mui-card">
+				<h3>按安置情况</h3>
+				<div class="dir"></div>
+				<div class="radio_inline">
+					<span class="mui-radio mui-left" style="margin-left: 3%;">
+					<input type="radio" name="anzhiqingkuang" id="weixianjie" value="jianyu"/>
+					<label>未衔接</label>
+				</span>
+					<span class="mui-radio mui-left">
+					<input type="radio" name="anzhiqingkuang" id="weibangjiao" value="jianyu"/>
+					<label>未帮教</label>
+				</span>
+					<span class="mui-radio mui-left">
+					<input type="radio" name="anzhiqingkuang" id="weianzhi" value="jianyu"/>
+					<label>未安置</label>
+				</span>
+					<span class="mui-radio mui-left">
+					<input type="radio" name="anzhiqingkuang" id="yianzhi" value="jianyu"/>
+					<label>已安置</label>
+				</span>
+				</div>
+			</div>
+
+			<div class="mui-card">
+
+				<h3>按释放来源</h3>
+				<div class="dir"></div>
+				<div class="radio_inline">
+					<span class="mui-radio mui-left" style="margin-left: 12.5%;">
+					<input type="radio" name="laiyuan" id="jianyu" value="jianyu"/>
+					<label>监狱</label>
+				</span>
+					<span class="mui-radio mui-left">
+					<input type="radio" name="laiyuan" id="kanshousuo" value="jianyu"/>
+					<label>看守所</label>
+				</span>
+					<span class="mui-radio mui-left">
+					<input type="radio" name="laiyuan" id="shequjiaozheng" value="jianyu"/>
+					<label>社区矫正</label>
+				</span>
+				</div>
+
+			</div>
+
+			<button id='search' class="mui-btn mui-btn-block mui-btn-primary" type='button'>查询</button>
+
+		</div>
+
+		<nav class="mui-bar mui-bar-tab">
+			<a class="mui-tab-item  shouye">
+				<span class="mui-icon iconfont icon-shouye"></span>
+				<span class="mui-tab-label">首页</span>
+			</a>
+			<a class="mui-tab-item xinxichaxun mui-active">
+				<span class="mui-icon iconfont icon-icon06 xinxichaxun"></span>
+				<span class="mui-tab-label">信息查询</span>
+			</a>
+			<a class="mui-tab-item yewubanli">
+				<span class="mui-icon iconfont icon-yewubanli"></span>
+				<span class="mui-tab-label">业务办理</span>
+			</a>
+		</nav>
+
+	</body>
+
+	<script src="../js/mui.min.js"></script>
+	<script type="text/javascript" src="../js/jquery.min.js"></script>
+	<script type="text/javascript" src="../js/mui.picker.min.js"></script>
+	<script>
+		mui.init({
+			swipeBack: false //启用右滑关闭功能
+		});
+
+		mui('.mui-scroll-wrapper').scroll({
+			deceleration: 0.0006 //flick 减速系数，系数越大，滚动速度越慢，滚动距离越小，默认值0.0006
+		});
+
+		(function($) {
+			$.init();
+			var result = $('#result1')[0];
+			var btns = $('.begin_time1');
+			btns.each(function(i, btn) {
+				btn.addEventListener('tap', function() {
+					var _self = this;
+					if(_self.picker) {
+						_self.picker.show(function(rs) {
+							result.value = ' ' + rs.text;
+							_self.picker.dispose();
+							_self.picker = null;
+						});
+
+					} else {
+						var optionsJson = this.getAttribute('data-options') || '{}';
+						var options = JSON.parse(optionsJson);
+						var id = this.getAttribute('id');
+						_self.picker = new $.DtPicker(options);
+						_self.picker.show(function(rs) {
+							result.value = ' ' + rs.text;
+							_self.picker.dispose();
+							_self.picker = null;
+						});
+
+					}
+
+				}, false);
+			});
+		})(mui);
+
+		mui.plusReady(function() {
+
+			document.getElementById("claer").addEventListener('tap', function() {
+				document.getElementById("result1").text = "";
+			});
+
+			document.getElementById("search").addEventListener('tap', function(e) {
+				e.preventDefault();
+				e.stopPropagation();
+				mui.openWindow({
+					url: '../person_page/person.html',
+					id: 'person.html',
+					styles: {
+						top: '0px', //新页面顶部位置
+						bottom: '0px', //新页面底部位置
+					},
+					show: {
+						autoShow: true,
+						duration: 300,
+					},
+					waiting: {
+						autoShow: true, //自动显示等待框，默认为true
+						title: '正在加载...',
+						duration: 5000
+					}
+				})
+			})
+
+			$(".shouye").on('tap', function(e) {
+				e.preventDefault();
+				e.stopPropagation();
+				mui.openWindow({
+					url: 'main1.html',
+					id: 'main1.html',
+					styles: {
+						top: '0px', //新页面顶部位置
+						bottom: '0px', //新页面底部位置
+					},
+					show: {
+						autoShow: true,
+						duration: 300,
+					},
+					waiting: {
+						autoShow: true, //自动显示等待框，默认为true
+						title: '正在加载...',
+						duration: 5000
+					}
+				})
+			})
+
+			$(".xinxichaxun").on('tap', function(e) {
+				e.preventDefault();
+				e.stopPropagation();
+				mui.openWindow({
+					url: 'main2.html',
+					id: 'main2.html',
+					styles: {
+						top: '0px', //新页面顶部位置
+						bottom: '0px', //新页面底部位置
+					},
+					show: {
+						autoShow: true,
+						duration: 300,
+					},
+					waiting: {
+						autoShow: true, //自动显示等待框，默认为true
+						title: '正在加载...',
+						duration: 5000
+					}
+				})
+			})
+
+			$(".yewubanli").on('tap', function(e) {
+				e.preventDefault();
+				e.stopPropagation();
+				mui.openWindow({
+					url: 'main3.html',
+					id: 'main3.html',
+					styles: {
+						top: '0px', //新页面顶部位置
+						bottom: '0px', //新页面底部位置
+					},
+					show: {
+						autoShow: true,
+						duration: 300,
+					},
+					waiting: {
+						autoShow: true, //自动显示等待框，默认为true
+						title: '正在加载...',
+						duration: 5000
+					}
+				})
+			})
+
+		})
+	</script>
+
+</html>

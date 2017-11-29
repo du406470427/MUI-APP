@@ -1,0 +1,323 @@
+<!doctype html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<link href="../css/mui.min.css" rel="stylesheet" />
+	</head>
+	<style>
+		html,
+		body {
+			background-color: #fff;
+		}
+		
+		.mui-title {
+			color: white;
+			font: bold 18px/ 45px "微软雅黑";
+		}
+		
+		.mui-bar-nav {
+			background-color: #0b84ff;
+		}
+		
+		.mui-return {
+			color: #fff;
+			font: bold 17px/ 45px "微软雅黑";
+			margin-left: -5px;
+		}
+		
+		.mui-bar .mui-icon {
+			padding-top: 0;
+		}
+		
+		.mui-bar-nav.mui-bar .mui-icon {
+			padding-left: 0;
+		}
+		
+		.mui-icon-left-nav {
+			color: white;
+		}
+		
+		h3 {
+			text-align: center;
+			text-indent: 15px;
+			font: bold 20px/30px "微软雅黑";
+		}
+		
+		..mui-table {
+			margin-bottom: 30px;
+		}
+		
+		.mui-table tr td {
+			width: 25%;
+			height: 30px;
+			box-sizing: border-box;
+			-moz-box-sizing: border-box;
+			/* Firefox */
+			-webkit-box-sizing: border-box;
+			/* Safari */
+			border: 1px solid #6641E2;
+			font: bold 13px/30px "微软雅黑";
+			text-align: center;
+			border-collapse: collapse;
+		}
+		
+		.mui-row {
+			margin-top: 5px;
+			margin-bottom: 10px;
+		}
+		
+		.mui-table-view .mui-media-object {
+			max-width: 60px;
+			height: 60px;
+			background: none;
+		}
+		
+		.pagination {
+			margin: 0 auto;
+			text-align: center;
+			margin-bottom: 10px;
+		}
+		
+		* {
+			padding: 0;
+			margin: 0;
+		}
+		/*
+			  * 外面盒子样式---自己定义
+			  */
+		
+		.page_div {
+			font-size: 15px;
+			font-family: "microsoft yahei";
+			margin-right: 10px;
+			padding-left: 20px;
+			box-sizing: border-box;
+		}
+		/*
+			 * 页数按钮样式
+			 */
+		
+		.page_div a {
+			min-width: 30px;
+			height: 28px;
+			border: 1px solid #EFEFEF;
+			text-align: center;
+			cursor: pointer;
+			margin: 0 2px;
+			line-height: 28px;
+			color: #666666;
+			font-size: 13px;
+			display: inline-block;
+			border-radius: 14px;
+		}
+		
+		#prePage,
+		#nextPage {
+			width: 70px;
+			color: #0073A9;
+			border: 1px solid #EFEFEF!important;
+		}
+		
+		.page_div .current {
+			background-color: #0073A9;
+			border-color: #0073A9;
+			color: #FFFFFF;
+		}
+		
+		.totalPages {
+			display: block;
+			width: 100%;
+			height: 30px;
+			margin: 0 auto;
+			font: bold 14px/30px "微软雅黑";
+			margin-bottom: 0;
+		}
+		
+		.totalPages span,
+		.totalSize span {
+			color: #0073A9;
+			margin: 0 5px;
+		}
+	</style>
+
+	<body>
+
+		<header class="mui-bar mui-bar-nav">
+			<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-lef">
+				<span class="mui-return">返回</span>
+			</a>
+
+			<h1 class="mui-title">人员列表</h1>
+		</header>
+
+		<div style="padding-top: 44px;">
+
+			<h3>一共查询到<span style="color: red; margin-left: 5px; margin-right: 5px;" id="totalNum"></span>条信息</h3>
+
+			<ul class="mui-table-view totalRecord"></ul>
+			<div class="mui-row"></div>
+
+			<div class="pagination">
+				<div class="pagination">
+					<div id="page" class="page_div"></div>
+				</div>
+
+			</div>
+
+			<script type="text/javascript" src="../js/mui.min.js"></script>
+			<script type="text/javascript" src="../js/jquery.min.js"></script>
+			<script type="text/javascript" src="../js/paging.js"></script>
+			<script type="text/javascript" src="../js/common.js"></script>
+			<script type="text/javascript">
+				mui.init();
+				mui.plusReady(function() {
+					var self = plus.webview.currentWebview();
+					var fkDept = plus.storage.getItem('fkDept');
+					var village = plus.storage.getItem('village');
+					var data = {};
+					data.pageNum = 1;
+					data.pageSize = 10;
+					if(village == 4) {
+						data.xz = fkDept;
+					} else {
+						data.hjdqh = fkDept;
+					}
+					data.xb = self.xb;
+					data.zfxm = self.zfxm;
+					data.bj = self.bj; //安置帮教状态
+					data.zfbh = self.zfbh;
+					data.zjhm = self.zjhm;
+					if(self.cjrq) {
+						var dateCon = self.cjrq.replace(/-/g, "/");
+						var date = new Date(dateCon);
+						data.cjrq = date; //出监日期
+					}
+					data.ptype = self.ptype;
+
+					$.ajax({
+						url: serverURL + 'jyZfxx/query.do',
+						type: 'post',
+						data: data,
+						dataType: 'json',
+						success: function(result) {
+							$('#totalNum').html(result.total);
+							var list = result.content;
+							var totalRecord = $('.totalRecord');
+							totalRecord.empty();
+							var recordLi;
+							if(list) {
+								for(var i = 0; i < list.length; i++) {
+									var data = list[i];
+									var cjrq;
+									if(data.cjrq) {
+										cjrq = data.cjrq;
+									}
+									//var url = '/azbj/webClient/upload/zfImg/';
+									recordLi = '<li class="mui-table-view-cell mui-media detail">' +
+										'<a onclick="person_info()">' +
+										'<img class="mui-media-object mui-pull-left" src="../img/user.png" width="60px" height="60px">' +
+										'<div class="mui-media-body">' +
+										'<p class="mui-ellipsis">姓名: <span>' + data.zfxm + '</span></p>' +
+										'<p class="mui-ellipsis">出监日期: <span>' + cjrq + '</span></p>' +
+										'<p class="mui-ellipsis">服刑监所: <span>' + data.szjy + '</span></p>' +
+										'<input type="hidden" value="' + data.zfbh + '">' +
+
+										'</div>' +
+										'</a>' +
+										'</li>';
+									totalRecord.append(recordLi);
+								}
+							} else {
+								totalRecord.append("无信息");
+							}
+							
+							$("#page").paging({
+								pageNo: 1,
+								totalPage: Math.ceil(result.total / 10),
+								totalSize: result.total,
+								callback: function(num) {
+									var data = {};
+									data.pageNum = num;
+									data.pageSize = 10;
+									if(village == 4) {
+										data.xz = fkDept;
+									} else {
+										data.hjdqh = fkDept;
+									}
+									data.xb = self.xb;
+									data.zfxm = self.zfxm;
+									data.bj = self.bj; //安置帮教状态
+									data.zfbh = self.zfbh;
+									data.zjhm = self.zjhm;
+									if(self.cjrq) {
+										var dateCon = self.cjrq.replace(/-/g, "/");
+										var date = new Date(dateCon);
+										data.cjrq = date; //出监日期
+									}
+									$.ajax({
+										url: serverURL + 'jyZfxx/query.do',
+										type: 'post',
+										data: data,
+										dataType: 'json',
+										cache: false,
+										success: function(result) {
+											var list = result.content;
+											var totalRecord = $('.totalRecord');
+											totalRecord.empty();
+											var recordLi;
+											if(list) {
+												for(var i = 0; i < list.length; i++) {
+													var data = list[i];
+													var cjrq;
+													if(data.cjrq) {
+														cjrq = data.cjrq;
+													}
+													//var url = '/azbj/webClient/upload/zfImg/';
+													recordLi = '<li class="mui-table-view-cell mui-media detail">' +
+														'<a onclick="person_info()">' +
+														'<img class="mui-media-object mui-pull-left" src="img/user.jpg" width="60px" height="60px">' +
+														'<div class="mui-media-body">' +
+														'<p class="mui-ellipsis">姓名: <span>' + data.zfxm + '</span></p>' +
+														'<p class="mui-ellipsis">出监日期: <span>' + cjrq + '</span></p>' +
+														'<p class="mui-ellipsis">服刑监所: <span>' + data.szjy + '</span></p>' +
+														'<input type="hidden" value="' + data.zfbh + '">' +
+														'</div>' +
+														'</a>' +
+														'</li>';
+													totalRecord.append(recordLi);
+												}
+											} else {
+												totalRecord.append("无信息");
+											}
+										}
+									});
+								}
+							});
+						},
+						complete: function() {},
+						error: function() {
+							alert("错误");
+						}
+					});
+				});
+
+				function person_info() {
+					$('.detail').unbind('click');
+					$('.detail').bind('click', function() {
+						mui.openWindow({
+							url: 'person_list.html',
+							id: 'person_list.html',
+							extras: {
+								szjy: $(this).find('p:eq(2)').find('span').html(),
+								zfbh: $(this).find("input").val()
+							}
+						});
+					});
+				}
+			</script>
+	</body>
+
+</html>

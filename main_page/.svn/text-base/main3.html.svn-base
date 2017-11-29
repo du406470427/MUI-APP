@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<title>Hello MUI</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+
+		<link rel="stylesheet" href="../css/mui.min.css">
+		<style>
+			html,
+			body {
+				background-color: #fff;
+			}
+			
+			.mui-title {
+				color: white;
+				font: bold 18px/ 45px "微软雅黑";
+			}
+			
+			.mui-bar-nav {
+				background-color: #0b84ff;
+			}
+			
+			.mui-return {
+				color: #fff;
+				font: bold 17px/ 45px "微软雅黑";
+				margin-left: -5px;
+			}
+			
+			.mui-bar .mui-icon {
+				padding-top: 0;
+			}
+			
+			.mui-bar-nav.mui-bar .mui-icon {
+				padding-left: 0;
+			}
+			
+			.mui-icon-left-nav {
+				color: white;
+			}
+			
+			h3 {
+				text-align: left;
+				text-indent: 15px;
+				font: bold 20px/30px "微软雅黑";
+			}
+			
+			.badge {
+				font-size: 10px;
+				line-height: 1.4;
+				position: absolute;
+				top: 5px;
+				left: 85%;
+				margin-left: -10px;
+				padding: 1px 5px;
+				color: #fff;
+				border-radius: 100px;
+				display: inline-block;
+				z-index: 999;
+			}
+			
+			.mui-icon .mui-badge {
+				left: 120%;
+				top: -2px;
+			}
+			
+			.mui-tb-view-cell {
+				width: 33.3333%;
+				height: 100px;
+				color: #fff;
+				font: bold 13px/15px "微软雅黑";
+				margin: 0 auto;
+				text-align: center;
+				position: relative;
+				top: 40px;
+				border-radius: 50px;
+			}
+			
+			.mui-content>.mui-table-view:first-child {
+				margin-top: 0;
+			}
+			
+			.mui-grid-view.mui-grid-9 .mui-table-view-cell {
+				border-right: 1px solid #C0C0C0;
+				border-bottom: 1px solid #C0C0C0;
+			}
+			
+			.mui-media-body {
+				color: #000 !important;
+				font: bold 13px/15px "微软雅黑";
+			}
+			
+			.mui-active {
+				background-color: rgba(255, 255, 255, 0.6)!important;
+			}
+			
+			.mui-active {
+				background-color: rgba(255, 255, 255, 0.2)!important;
+			}
+		</style>
+	</head>
+
+	<body>
+
+		<header class="mui-bar mui-bar-nav">
+			<h1 class="mui-title">业务办理</h1>
+		</header>
+
+		<div class="mui-content">
+			<ul class="mui-table-view mui-grid-view mui-grid-9">
+				<li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3">
+					<a id="check">
+						<span class="mui-icon iconfont icon-icon06"><span class="mui-badge mui-badge-red">15</span></span>
+						<div class="mui-media-body">待核查</div>
+					</a>
+				</li>
+				<li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3">
+					<a id="transfer">
+						<span class="mui-icon mui-icon-email"><span class="mui-badge mui-badge-red">6</span></span>
+						<div class="mui-media-body">待交接</div>
+					</a>
+				</li>
+				<li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3">
+					<a href="#">
+						<span class="mui-icon mui-icon-plusempty"></span>
+						<div class="mui-media-body">暂待添加</div>
+					</a>
+				</li>
+			</ul>
+		</div>
+		
+		
+
+		<nav class="mui-bar mui-bar-tab">
+			<a class="mui-tab-item  shouye">
+				<span class="mui-icon iconfont icon-shouye"></span>
+				<span class="mui-tab-label">首页</span>
+			</a>
+			<a class="mui-tab-item xinxichaxun">
+				<span class="mui-icon iconfont icon-icon06 xinxichaxun"></span>
+				<span class="mui-tab-label">信息查询</span>
+			</a>
+			<a class="mui-tab-item yewubanli mui-active">
+				<span class="mui-icon iconfont icon-yewubanli"></span>
+				<span class="mui-tab-label">业务办理</span>
+			</a>
+		</nav>
+
+	</body>
+	<script src="../js/mui.min.js"></script>
+	<script type="text/javascript" src="../js/jquery.min.js"></script>
+	<script>
+		mui.plusReady(function() {
+			document.getElementById("check").addEventListener('tap', function(e) {
+				e.preventDefault();
+				e.stopPropagation();
+				mui.openWindow({
+					url: '../check_page/Check_page.html',
+					id: 'Check_page.html',
+					styles: {
+						top: '0px', //新页面顶部位置
+						bottom: '0px', //新页面底部位置
+					},
+					show: {
+						autoShow: true,
+						duration: 300,
+					},
+					waiting: {
+						autoShow: true, //自动显示等待框，默认为true
+						title: '正在加载...',
+						duration: 5000
+					}
+				})
+			});
+
+			document.getElementById("transfer").addEventListener('tap', function(e) {
+				e.preventDefault();
+				e.stopPropagation();
+				mui.openWindow({
+					url: '../transfer_page/Transfer.html',
+					id: 'Transfer.html',
+					styles: {
+						top: '0px', //新页面顶部位置
+						bottom: '0px', //新页面底部位置
+					},
+					show: {
+						autoShow: true,
+						duration: 300,
+					},
+					waiting: {
+						autoShow: true, //自动显示等待框，默认为true
+						title: '正在加载...',
+						duration: 5000
+					}
+				})
+			})
+
+			$(".shouye").on('tap', function(e) {
+				e.preventDefault();
+				e.stopPropagation();
+				mui.openWindow({
+					url: 'main1.html',
+					id: 'main1.html',
+					styles: {
+						top: '0px', //新页面顶部位置
+						bottom: '0px', //新页面底部位置
+					},
+					show: {
+						autoShow: true,
+						duration: 300,
+					},
+					waiting: {
+						autoShow: true, //自动显示等待框，默认为true
+						title: '正在加载...',
+						duration: 5000
+					}
+				})
+			})
+
+			$(".xinxichaxun").on('tap', function(e) {
+				e.preventDefault();
+				e.stopPropagation();
+				mui.openWindow({
+					url: 'main2.html',
+					id: 'main2.html',
+					styles: {
+						top: '0px', //新页面顶部位置
+						bottom: '0px', //新页面底部位置
+					},
+					show: {
+						autoShow: true,
+						duration: 300,
+					},
+					waiting: {
+						autoShow: true, //自动显示等待框，默认为true
+						title: '正在加载...',
+						duration: 5000
+					}
+				})
+			})
+
+			$(".yewubanli").on('tap', function(e) {
+				e.preventDefault();
+				e.stopPropagation();
+				mui.openWindow({
+					url: 'main3.html',
+					id: 'main3.html',
+					styles: {
+						top: '0px', //新页面顶部位置
+						bottom: '0px', //新页面底部位置
+					},
+					show: {
+						autoShow: true,
+						duration: 300,
+					},
+					waiting: {
+						autoShow: true, //自动显示等待框，默认为true
+						title: '正在加载...',
+						duration: 5000
+					}
+				})
+			})
+			
+			
+			
+		})
+	</script>
+
+</html>

@@ -1,0 +1,213 @@
+<!doctype html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<link href="css/mui.min.css" rel="stylesheet" />
+	</head>
+
+	<style>
+		html,
+		body {
+			background-color: #fff;
+		}
+		
+		.mui-title {
+			color: white;
+			font: bold 18px/ 45px "微软雅黑";
+		}
+		
+		.mui-bar-nav {
+			background-color: #0b84ff;
+		}
+		
+		.mui-return {
+			color: #fff;
+			font: bold 17px/ 45px "微软雅黑";
+			margin-left: -5px;
+		}
+		
+		.mui-bar .mui-icon {
+			padding-top: 0;
+		}
+		
+		.mui-bar-nav.mui-bar .mui-icon {
+			padding-left: 0;
+		}
+		
+		.mui-icon-left-nav {
+			color: white;
+		}
+		
+		h3 {
+			text-align: center;
+			font: bold 17px/ 30px "微软雅黑";
+		}
+		
+		.mui-table {
+			width: 100%;
+		}
+		
+		.mui-table tr {
+			height: 60px;
+		}
+		
+		.mui-table tr:nth-child(even) {
+			background-color: #daf0ff;
+		}
+		
+		.mui-table tr td {
+			text-align: center;
+			font: bold 13px/20px "微软雅黑";
+			color: #6D6D72;
+		}
+		
+		.pagination {
+			margin: 0 auto;
+			text-align: center;
+			margin-bottom: 10px;
+		}
+		
+		.page_div a {
+			min-width: 30px;
+			height: 28px;
+			border: 1px solid #EFEFEF;
+			text-align: center;
+			cursor: pointer;
+			margin: 0 2px;
+			line-height: 28px;
+			color: #666666;
+			font-size: 13px;
+			display: inline-block;
+			border-radius: 14px;
+		}
+		
+		#prePage,
+		#nextPage {
+			width: 70px;
+			color: #0073A9;
+			border: 1px solid #EFEFEF!important;
+		}
+		
+		.page_div .current {
+			background-color: #0073A9;
+			border-color: #0073A9;
+			color: #FFFFFF;
+		}
+		
+		.totalPages {
+			display: block;
+			width: 100%;
+			height: 30px;
+			margin: 0 auto;
+			font: bold 14px/30px "微软雅黑";
+			margin-bottom: 0;
+		}
+		
+		.totalPages span,
+		.totalSize span {
+			color: #0073A9;
+			margin: 0 5px;
+		}
+		
+		.mui-content {
+			background-color: #fff;
+		}
+	</style>
+
+	<body>
+
+		<header class="mui-bar mui-bar-nav">
+			<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-lef"></a>
+			<span class="mui-return">返回</span>
+			<h1 class="mui-title">工作详情</h1>
+		</header>
+
+		<div class="mui-content">
+			<div class="mui-card">
+				<table class="mui-table">
+
+					<tr>
+						<td class="mui-col-sm-3 mui-col-xs-3" colspan="4" style="font: bold  18px/30px '微软雅黑'; color: #000;">信息详情表</td>
+					</tr>
+
+					<tr>
+						<td class="mui-col-sm-3 mui-col-xs-3" style="color: #000;">姓名</td>
+						<td class="mui-col-sm-3 mui-col-xs-3" style="color: #000;">出监日期</td>
+						<td class="mui-col-sm-3 mui-col-xs-3" style="color: #000;">所在监狱</td>
+						<td class="mui-col-sm-3 mui-col-xs-3" style="color: #000;" id="turn">操作</td>
+					</tr>
+
+					<tr>
+						<td class="mui-col-sm-3 mui-col-xs-3">张三</td>
+						<td class="mui-col-sm-3 mui-col-xs-3">2017/11/11</td>
+						<td class="mui-col-sm-3 mui-col-xs-3">银川监狱</td>
+						<td class="mui-col-sm-3 mui-col-xs-3">操作</td>
+					</tr>
+
+					<tr>
+						<td class="mui-col-sm-3 mui-col-xs-3">张三</td>
+						<td class="mui-col-sm-3 mui-col-xs-3">2017/11/11</td>
+						<td class="mui-col-sm-3 mui-col-xs-3">银川监狱</td>
+						<td class="mui-col-sm-3 mui-col-xs-3">操作</td>
+					</tr>
+
+					<tr>
+						<td class="mui-col-sm-3 mui-col-xs-3">张三</td>
+						<td class="mui-col-sm-3 mui-col-xs-3">2017/11/11</td>
+						<td class="mui-col-sm-3 mui-col-xs-3">银川监狱</td>
+						<td class="mui-col-sm-3 mui-col-xs-3">操作</td>
+					</tr>
+
+					<tr>
+						<td class="mui-col-sm-3 mui-col-xs-3">张三</td>
+						<td class="mui-col-sm-3 mui-col-xs-3">2017/11/11</td>
+						<td class="mui-col-sm-3 mui-col-xs-3">银川监狱</td>
+						<td class="mui-col-sm-3 mui-col-xs-3">操作</td>
+					</tr>
+				</table>
+			</div>
+
+			<div class="pagination">
+				<div value="1 0"></div>
+				<div id="page" class="page_div"></div>
+			</div>
+
+		</div>
+
+	</body>
+
+	<script src="js/mui.min.js"></script>
+	<script type="text/javascript" src="js/jquery.min.js"></script>
+	<script type="text/javascript" src="js/paging.js"></script>
+	<script type="text/javascript">
+		mui.init()
+		
+		mui.plusReady(function(){
+			$("#turn").on('tap', function(e) {
+				e.preventDefault();
+				e.stopPropagation();
+				mui.openWindow({
+					url: 'new.html',
+					id: 'news1.html',
+					styles: {
+						top: '0px', //新页面顶部位置
+						bottom: '0px', //新页面底部位置
+					},
+					show: {
+						autoShow: true,
+						duration: 300,
+					},
+					waiting: {
+						autoShow: true, //自动显示等待框，默认为true
+						title: '正在加载...',
+						duration: 5000
+					}
+				})
+			})
+		})
+	</script>
+
+</html>

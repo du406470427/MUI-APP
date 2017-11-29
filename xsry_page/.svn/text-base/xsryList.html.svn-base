@@ -1,0 +1,331 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<link href="../css/mui.min.css" rel="stylesheet" />
+	</head>
+	<style>
+		html,body {
+			background-color: #fff;
+		}
+		
+		.mui-title {
+			color: white;
+			font: bold 18px/ 45px "微软雅黑";
+		}
+		
+		.mui-bar-nav {
+			background-color: #0b84ff;
+		}
+		
+		.mui-return {
+			color: #fff;
+			font: bold 17px/ 45px "微软雅黑";
+			margin-left: -5px;
+		}
+		
+		.mui-bar .mui-icon {
+			padding-top: 0;
+		}
+		
+		.mui-bar-nav.mui-bar .mui-icon {
+			padding-left: 0;
+		}
+		
+		.mui-icon-left-nav {
+			color: white;
+		}
+		
+		h3 {
+			text-align: center;
+			font: bold 17px/ 30px "微软雅黑";
+		}
+		
+		.mui-table {
+			width: 100%;
+		}
+		
+		.mui-table tr {
+			height: 60px;
+		}
+		
+		.mui-table tr:nth-child(even) {
+			background-color: #daf0ff;
+		}
+		
+		.mui-table tr td {
+			text-align: center;
+			font: bold 13px/20px "微软雅黑";
+			color: #6D6D72;
+		}
+		
+		.pagination {
+			margin: 0 auto;
+			text-align: center;
+			margin-bottom: 10px;
+		}
+		
+		.page_div a {
+			min-width: 30px;
+			height: 28px;
+			border: 1px solid #EFEFEF;
+			text-align: center;
+			cursor: pointer;
+			margin: 0 2px;
+			line-height: 28px;
+			color: #666666;
+			font-size: 13px;
+			display: inline-block;
+			border-radius: 14px;
+		}
+		
+		#prePage,
+		#nextPage {
+			width: 70px;
+			color: #0073A9;
+			border: 1px solid #EFEFEF!important;
+		}
+		
+		.page_div .current {
+			background-color: #0073A9;
+			border-color: #0073A9;
+			color: #FFFFFF;
+		}
+		
+		.totalPages {
+			display: block;
+			width: 100%;
+			height: 30px;
+			margin: 0 auto;
+			font: bold 14px/30px "微软雅黑";
+			margin-bottom: 0;
+		}
+		
+		.totalPages span,
+		.totalSize span {
+			color: #0073A9;
+			margin: 0 5px;
+		}
+		
+		.mui-content {
+			background-color: #fff;
+		}
+	</style>
+	<body>
+		<header class="mui-bar mui-bar-nav">
+			<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-lef"></a>
+			<span class="mui-return">返回</span>
+			<h1 class="mui-title">人员信息</h1>
+		</header>
+		<div class="mui-content">
+			<div class="mui-card">
+				<table class="mui-table xsryRecord"></table>
+			</div>
+			<div class="pagination">
+				<div value="1 0"></div>
+				<div id="page" class="page_div"></div>
+			</div>
+		</div>
+	</body>
+	<script src="../js/mui.min.js"></script>
+	<script type="text/javascript" src="../js/jquery.min.js"></script>
+	<script type="text/javascript" src="../js/paging.js"></script>
+	<script type="text/javascript" src="../js/common.js"></script>
+	<script type="text/javascript">
+		mui.init()
+		mui.plusReady(function(){
+			var fkDept = plus.storage.getItem('fkDept');
+			var village = plus.storage.getItem('village');
+			var self = plus.webview.currentWebview();
+			var type = self.type;
+			var param = {};
+			param.pageNum = 1;
+			param.pageSize = 10;
+			if(village == 4) {
+				param.xz = fkDept;
+			} else {
+				param.hjdqh = fkDept;
+			}
+			switch (type){
+		    	case 'jyxs':
+		    		param.ptype = '01';
+		    		break;
+		    	case 'kssxs':
+		    		param.ptype = '02';
+		    		break;
+		    	case 'sqjzxs':
+		    		param.ptype = '05';
+		    		break;
+		    	case 'bjwxj':
+		    		param.bj = '0';
+		    		break;
+		    	case 'bjyxj':
+		    		param.bj = '5';
+		    		break;
+		    	case 'bjwbj':
+		    		param.bj = "1";
+		    		break;
+		    	case 'bjybj':
+		    		param.bj = '6';
+		    		break;
+		    	case 'bjwaz':
+		    		param.bj = '2';
+		    		break;
+		    	case 'bjyaz':
+		    		param.bj = '3';
+		    		break;
+		    	case 'xsrywfp':
+		    		param.state = '1';
+		    		break;
+	    	}
+			$.ajax({
+				url: serverURL + 'jyZfxx/queryXsry.do',
+				type: 'post',
+				data: param,
+				dataType: 'json',
+				success: function(result){
+					var xsryRecord = $('.xsryRecord');
+					xsryRecord.empty();
+					var tr = '<tr>' + 
+							 	'<td class="mui-col-sm-3 mui-col-xs-3" colspan="4" style="font: bold  18px/30px "微软雅黑"; color: #000;">刑释人员信息列表</td>' + 
+							 '</tr>';
+					xsryRecord.append(tr);
+					var list = result.content;
+					if(list){
+						for(var i = 0; i < list.length; i++) {
+							var data = list[i];
+							var cjrq;
+							if(data.cjrq) {
+								cjrq = data.cjrq;
+							}
+							var recordTr = '<tr class="xsrybtn">' +
+								'<td class="mui-col-sm-3 mui-col-xs-3" style="color: #000;">' + data.zfxm + '</td>' +
+								'<td class="mui-col-sm-3 mui-col-xs-3" style="color: #000;">' + cjrq + '</td>' +
+								'<td class="mui-col-sm-3 mui-col-xs-3" style="color: #000;">' + data.szjy + '</td>' +
+								'<td class="mui-col-sm-3 mui-col-xs-3" style="color: #000;" id="turn">' +
+								'<a onclick="person_info()">详细' +
+								'<input type="hidden" value="' + data.zfbh + '">' +
+								'</a>' +
+								'</td>' +
+								'</tr>';
+							xsryRecord.append(recordTr);
+						}
+					}else{
+						xsryRecord.append("无信息");
+					}
+					$("#page").paging({
+						pageNo: 1,
+						totalPage: Math.ceil(result.total / 10),
+						totalSize: result.total,
+						callback: function(num){
+							var param = {};
+							param.pageNum = num;
+							param.pageSize = 10;
+							if(village == 4) {
+								param.xz = fkDept;
+							} else {
+								param.hjdqh = fkDept;
+							}
+							switch (type){
+						    	case 'jyxs':
+						    		param.ptype = '01';
+						    		break;
+						    	case 'kssxs':
+						    		param.ptype = '02';
+						    		break;
+						    	case 'sqjzxs':
+						    		param.ptype = '05';
+						    		break;
+						    	case 'bjwxj':
+						    		param.bj = '0';
+						    		break;
+						    	case 'bjyxj':
+						    		param.bj = '5';
+						    		break;
+						    	case 'bjwbj':
+						    		param.bj = "1";
+						    		break;
+						    	case 'bjybj':
+						    		param.bj = '6';
+						    		break;
+						    	case 'bjwaz':
+						    		param.bj = '2';
+						    		break;
+						    	case 'bjyaz':
+						    		param.bj = '3';
+						    		break;
+						    	case 'xsrywfp':
+						    		param.state = '1';
+						    		break;
+					    	}
+							$.ajax({
+								url: serverURL + 'jyZfxx/queryXsry.do',
+								type: 'post',
+								data: param,
+								dataType: 'json',
+								success: function(result){
+									var xsryRecord = $('.xsryRecord');
+									xsryRecord.empty();
+									var tr = '<tr>' + 
+											 	'<td class="mui-col-sm-3 mui-col-xs-3" colspan="4" style="font: bold  18px/30px "微软雅黑"; color: #000;">刑释人员信息列表</td>' + 
+											 '</tr>';
+									xsryRecord.append(tr);
+									var list = result.content;
+									if(list){
+										for(var i = 0; i < list.length; i++) {
+											var data = list[i];
+											var cjrq;
+											if(data.cjrq) {
+												cjrq = data.cjrq;
+											}
+											var recordTr = '<tr class="xsrybtn">' +
+												'<td class="mui-col-sm-3 mui-col-xs-3" style="color: #000;">' + data.zfxm + '</td>' +
+												'<td class="mui-col-sm-3 mui-col-xs-3" style="color: #000;">' + cjrq + '</td>' +
+												'<td class="mui-col-sm-3 mui-col-xs-3" style="color: #000;">' + data.szjy + '</td>' +
+												'<td class="mui-col-sm-3 mui-col-xs-3" style="color: #000;" id="turn">' +
+												'<a onclick="person_info()">详细' +
+												'<input type="hidden" value="' + data.zfbh + '">' +
+												'</a>' +
+												'</td>' +
+												'</tr>';
+											xsryRecord.append(recordTr);
+										}
+									}else{
+										xsryRecord.append("无信息");
+									}
+								},
+								complete: function(){},
+								error: function(){
+									alert("错误");
+								}
+							});
+						}
+					});
+				},
+				complete: function(){},
+				error: function(){
+					alert("错误");
+				}
+			});
+		})
+		function person_info() {
+			var self = plus.webview.currentWebview();
+			var type = self.type;
+			$('.xsrybtn').unbind('click');
+			$('.xsrybtn').bind('click', function() {
+				mui.openWindow({
+					url: '../transfer_page/Transfer_page.html',
+					id: 'Transfer_page.html',
+					extras: {
+						type: type,
+						zfbh: $(this).find("input").val(), //选当前tr下的input标签的值
+						szjy: $(this).find('td:eq(2)').html() //选择 当前tr下的 第三个td值
+					}
+				});
+			});
+		}
+	</script>
+
+</html>

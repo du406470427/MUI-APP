@@ -1,0 +1,9 @@
+{
+  "login.html": {
+    "href": "login.html",
+    "resources": [
+      "js/common.js"
+    ],
+    "priority": 0
+  }
+}

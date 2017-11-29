@@ -1,0 +1,246 @@
+{
+  "check_page/Check_page_info.html": {
+    "href": "check_page/Check_page_info.html",
+    "resources": [
+      "js/mui.min.js",
+      "js/common.js",
+      "js/jquery.min.js",
+      "css/mui.min.css",
+      "fonts/mui.ttf",
+      "fonts/iconfont1.ttf",
+      "fonts/iconfont.ttf",
+      "img/user.png"
+    ],
+    "refer": [
+      "check_page/Check_page.html"
+    ],
+    "priority": 1
+  },
+  "check_page/Check_page.html": {
+    "href": "check_page/Check_page.html",
+    "resources": [
+      "js/mui.min.js",
+      "js/jquery.min.js",
+      "js/paging.js",
+      "js/common.js",
+      "css/mui.min.css",
+      "fonts/mui.ttf",
+      "fonts/iconfont1.ttf",
+      "fonts/iconfont.ttf"
+    ],
+    "refer": [
+      "check_page/Check_page.html",
+      "check_page/Check_page_info.html"
+    ],
+    "priority": 0
+  },
+  "transfer_page/Transfer_page.html": {
+    "href": "transfer_page/Transfer_page.html",
+    "resources": [
+      "js/mui.min.js",
+      "js/jquery.min.js",
+      "js/common.js",
+      "css/mui.min.css",
+      "fonts/mui.ttf",
+      "fonts/iconfont1.ttf",
+      "fonts/iconfont.ttf",
+      "img/user.png"
+    ],
+    "priority": 2
+  },
+  "transfer_page/Transfer.html": {
+    "href": "transfer_page/Transfer.html",
+    "resources": [
+      "js/mui.min.js",
+      "js/jquery.min.js",
+      "js/paging.js",
+      "js/common.js",
+      "css/mui.min.css",
+      "fonts/mui.ttf",
+      "fonts/iconfont1.ttf",
+      "fonts/iconfont.ttf"
+    ],
+    "refer": [
+      "transfer_page/Transfer_page.html"
+    ],
+    "priority": 2
+  },
+  "person_page/person_list.html": {
+    "href": "person_page/person_list.html",
+    "resources": [
+      "js/mui.min.js",
+      "js/jquery.min.js",
+      "js/common.js",
+      "css/mui.min.css",
+      "fonts/mui.ttf",
+      "fonts/iconfont1.ttf",
+      "fonts/iconfont.ttf",
+      "img/user.png"
+    ],
+    "priority": 7
+  },
+  "person_page/person.html": {
+    "href": "person_page/person.html",
+    "resources": [
+      "css/mui.min.css",
+      "fonts/mui.ttf",
+      "fonts/iconfont1.ttf",
+      "fonts/iconfont.ttf",
+      "js/mui.min.js",
+      "js/jquery.min.js",
+      "js/paging.js",
+      "js/common.js",
+      "img/user.png"
+    ],
+    "refer": [
+      "person_page/person_list.html"
+    ],
+    "priority": 7
+  },
+  "main_page/main2.html": {
+    "href": "main_page/main2.html",
+    "resources": [
+      "js/mui.min.js",
+      "js/jquery.min.js",
+      "js/mui.picker.min.js",
+      "css/mui.min.css",
+      "fonts/mui.ttf",
+      "fonts/iconfont1.ttf",
+      "fonts/iconfont.ttf",
+      "css/mui.picker.min.css"
+    ],
+    "refer": [
+      "main_page/main3.html",
+      "person_page/person.html",
+      "main_page/main2.html",
+      "main_page/main1.html"
+    ],
+    "priority": 6
+  },
+  "main_page/main3.html": {
+    "href": "main_page/main3.html",
+    "resources": [
+      "js/mui.min.js",
+      "js/jquery.min.js",
+      "js/common.js",
+      "css/mui.min.css",
+      "fonts/mui.ttf",
+      "fonts/iconfont1.ttf",
+      "fonts/iconfont.ttf"
+    ],
+    "refer": [
+      "transfer_page/Transfer.html",
+      "check_page/Check_page.html",
+      "main_page/main3.html",
+      "main_page/main2.html",
+      "main_page/main1.html"
+    ],
+    "priority": 3
+  },
+  "xsry_page/xsryList.html": {
+    "href": "xsry_page/xsryList.html",
+    "resources": [
+      "js/mui.min.js",
+      "js/jquery.min.js",
+      "js/paging.js",
+      "js/common.js",
+      "css/mui.min.css",
+      "fonts/mui.ttf",
+      "fonts/iconfont1.ttf",
+      "fonts/iconfont.ttf"
+    ],
+    "refer": [
+      "transfer_page/Transfer_page.html"
+    ],
+    "priority": 4
+  },
+  "fxry_page/fxryDetail.html": {
+    "href": "fxry_page/fxryDetail.html",
+    "resources": [
+      "js/mui.min.js",
+      "js/jquery.min.js",
+      "js/common.js",
+      "css/mui.min.css",
+      "fonts/mui.ttf",
+      "fonts/iconfont1.ttf",
+      "fonts/iconfont.ttf",
+      "img/user.png"
+    ],
+    "priority": 5
+  },
+  "fxry_page/fxryList.html": {
+    "href": "fxry_page/fxryList.html",
+    "resources": [
+      "js/mui.min.js",
+      "js/jquery.min.js",
+      "js/paging.js",
+      "js/common.js",
+      "css/mui.min.css",
+      "fonts/mui.ttf",
+      "fonts/iconfont1.ttf",
+      "fonts/iconfont.ttf"
+    ],
+    "refer": [
+      "fxry_page/fxryDetail.html"
+    ],
+    "priority": 5
+  },
+  "news_page/news1.html": {
+    "href": "news_page/news1.html",
+    "resources": [
+      "img/login_bg.jpg",
+      "css/mui.min.css",
+      "fonts/mui.ttf",
+      "fonts/iconfont1.ttf",
+      "fonts/iconfont.ttf",
+      "js/mui.min.js"
+    ],
+    "priority": 6
+  },
+  "main_page/main1.html": {
+    "href": "main_page/main1.html",
+    "resources": [
+      "js/mui.min.js",
+      "js/jquery.min.js",
+      "js/common.js",
+      "css/mui.min.css",
+      "fonts/mui.ttf",
+      "fonts/iconfont1.ttf",
+      "fonts/iconfont.ttf",
+      "css/iconfont.css",
+      "fonts/iconfont.ttf",
+      "fonts/iconfont1.ttf",
+      "img/index_bg.png",
+      "img/index_main_news_title.png",
+      "img/user.png",
+      "img/index_main1_icon1.png",
+      "img/index_main1_icon2.png",
+      "img/index_main1_icon3.png",
+      "img/index_main_news1.png",
+      "img/index_main_news2.png",
+      "img/index_main_news3.png",
+      "img/4.png",
+      "img/5.png",
+      "img/6.png"
+    ],
+    "refer": [
+      "check_page/Check_page.html",
+      "main_page/main1.html",
+      "transfer_page/Transfer.html",
+      "main_page/main3.html",
+      "xsry_page/xsryList.html",
+      "fxry_page/fxryList.html",
+      "news_page/news1.html",
+      "main_page/main2.html"
+    ],
+    "priority": 0
+  },
+  "login.html": {
+    "href": "login.html",
+    "resources": [],
+    "refer": [
+      "main_page/main1.html"
+    ],
+    "priority": 0
+  }
+}

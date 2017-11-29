@@ -1,0 +1,17 @@
+K 25
+svn:wc:ra_dav:version-url
+V 64
+/svn/azbjWebApp/!svn/ver/23/azbjWebApp/WebRoot/webpage/unpackage
+END
+.dependencies
+K 25
+svn:wc:ra_dav:version-url
+V 78
+/svn/azbjWebApp/!svn/ver/23/azbjWebApp/WebRoot/webpage/unpackage/.dependencies
+END
+.confirmed_dependencies
+K 25
+svn:wc:ra_dav:version-url
+V 88
+/svn/azbjWebApp/!svn/ver/23/azbjWebApp/WebRoot/webpage/unpackage/.confirmed_dependencies
+END

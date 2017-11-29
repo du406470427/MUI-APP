@@ -1,0 +1,106 @@
+<!doctype html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<link href="../css/mui.min.css" rel="stylesheet" />
+	</head>
+	<style>
+		body {
+			background: url(../img/login_bg.jpg) no-repeat;
+			background-size: cover;
+		}
+		
+		.mui-title {
+			color: white;
+			font: bold 18px/45px "微软雅黑";
+		}
+		
+		.mui-bar-nav {
+			background-color: #0b84ff;
+		}
+		
+		.mui-return {
+			color: #fff;
+			font: bold 17px/ 45px "微软雅黑";
+			margin-left: -5px;
+		}
+		
+		.mui-bar .mui-icon {
+			padding-top: 0;
+		}
+		
+		.mui-bar-nav.mui-bar .mui-icon {
+			padding-left: 0;
+		}
+		
+		.mui-icon-left-nav {
+			color: white;
+		}
+		
+		.mui-card-header {
+			text-align: left;
+			font: bold 16px/ 25px "微软雅黑";
+		}
+		
+		p {
+			text-indent: 15px;
+			font: bold 13px/ 26px "微软雅黑";
+			color: #fff;
+		}
+		
+		.mui-card-footer span {
+			margin: 0 auto;
+			text-align: center;
+			color: #fff;
+		}
+		
+		.mui-content {
+			background: none;
+			margin-top: 5%;
+		}
+		
+		.mui-card {
+			background: rgba(255, 255, 255, 0.3);
+		}
+		
+		.mui-card-footer:before,
+		.mui-card-header:after {
+			background-color: #fff;
+		}
+	</style>
+
+	<body>
+
+		<header class="mui-bar mui-bar-nav">
+			<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left">
+				<span class="mui-return">返回</span></a>
+			<h1 class="mui-title" id="title">通知公告</h1>
+		</header>
+
+		<div class="mui-content">
+
+			<div class="mui-card">
+				<div class="mui-card-header">
+					<p style="color: #fff;font: bold 16px/ 25px '微软雅黑'; text-align: center; margin: 0 auto; text-indent: 0;">天津市监狱管理局为市政府管理机构</p>
+				</div>
+				<div class="mui-card-content-inner">
+					<p>天津市监狱管理局为市政府管理机构，规格为副局级，由市司法局管理。负责监督、指导和管理全市监狱、未成年犯管教所执行刑罚、改造罪犯的工作。</p>
+					<p>局属13个单位，包括天津市监狱、河西监狱、梨园监狱、杨柳青监狱、李港监狱、滨海监狱、西青监狱、女子监狱、津西监狱、康宁监狱、未成年犯管教所、长泰监狱 12个押犯单位和1支应急特勤队。</p>
+					<p>局机关坐落于南开区南门外大街228号，下设16个内设机构：办公室、政策法制处、狱政管理处、刑罚执行处、侦查保卫处、教育改造处、生活卫生处、劳动改造处、计划财务处、行政装备处、劳动工资处、规划建设处、监察室、监狱物资供应处、警务督察部、政治部。</p>
+					<p>同时，按照有关规定设置老干部处、工会。</p>
+				</div>
+				<div class="mui-card-footer"><span>发布时间 : 2017/10/19</span></div>
+			</div>
+
+		</div>
+
+		<script src="../js/mui.min.js"></script>
+		<script type="text/javascript">
+			mui.init()
+		</script>
+	</body>
+
+</html>

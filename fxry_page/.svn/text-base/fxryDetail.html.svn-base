@@ -1,0 +1,305 @@
+<!doctype html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<link href="../css/mui.min.css" rel="stylesheet" />
+	</head>
+	<style>
+		.mui-title {
+			color: white;
+			font: bold 18px/ 45px "微软雅黑";
+		}
+		
+		.mui-bar-nav {
+			background-color: #0b84ff;
+		}
+		
+		.mui-return {
+			color: #fff;
+			font: bold 17px/ 45px "微软雅黑";
+			margin-left: -5px;
+		}
+		
+		.mui-bar .mui-icon {
+			padding-top: 0;
+		}
+		
+		.mui-bar-nav.mui-bar .mui-icon {
+			padding-left: 0;
+		}
+		
+		.mui-icon-left-nav {
+			color: white;
+		}
+		
+		h3 {
+			text-align: center;
+			font: bold 17px/ 30px "微软雅黑";
+		}
+		
+		.mui-card-header>img:first-child {
+			width: 100%;
+			height: auto;
+		}
+		
+		p {
+			margin-bottom: 5px;
+		}
+		
+		.dir {
+			width: 94%;
+			height: 1px;
+			border-top: 1px solid #f2f2f2;
+			margin: 0 auto;
+			text-align: center;
+		}
+		
+		.mui-table tr td {
+			height: 30px;
+			box-sizing: border-box;
+			-moz-box-sizing: border-box;
+			/* Firefox */
+			-webkit-box-sizing: border-box;
+			/* Safari */
+			font: bold 13px/30px "微软雅黑";
+			text-align: left;
+			border-collapse: collapse;
+			border-bottom: 1px solid #f2f2f2;
+		}
+		
+		.mui-table tr td:nth-child(2) {
+			text-align: right;
+			padding-right: 10px;
+			color: #777777;
+		}
+	</style>
+
+	<body>
+		<header class="mui-bar mui-bar-nav">
+			<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-lef">
+				<span class="mui-return">返回</span>
+			</a>
+
+			<h1 class="mui-title"><span class="zfxm"></span>的详情信息</h1>
+		</header>
+
+		<div class="mui-content">
+			<div>
+				<div id="item1" class="mui-control-content mui-active">
+					<div class="mui-card">
+
+						<div class="mui-card-content">
+							<div class="mui-card-content-inner">
+
+								<table class="mui-table">
+
+									<tr style="height: 80px;">
+										<td class="mui-col-sm-3 mui-col-xs-3">头像</td>
+										<td class="mui-col-sm-9 mui-col-xs-9 ">
+											<img src="../img/user.png" width="70px" alt="" />
+										</td>
+									</tr>
+
+									<tr>
+										<td class="mui-col-sm-3 mui-col-xs-3">姓名</td>
+										<td class="mui-col-sm-9 mui-col-xs-9 zfxm"></td>
+									</tr>
+
+									<tr>
+										<td class="mui-col-sm-4 mui-col-xs-4">性别 </td>
+										<td class="mui-col-sm-8 mui-col-xs-8 xb"></td>
+									</tr>
+
+									<tr>
+										<td class="mui-col-sm-4 mui-col-xs-4"> 罪犯编号</td>
+										<td class="mui-col-sm-8 mui-col-xs-8 zfbh"></td>
+									</tr>
+
+									<tr>
+										<td class="mui-col-sm-4 mui-col-xs-4">出生日期</td>
+										<td class="mui-col-sm-8 mui-col-xs-8 csrq"></td>
+									</tr>
+
+									<tr>
+										<td class="mui-col-sm-4 mui-col-xs-4">身份证号</td>
+										<td class="mui-col-sm-8 mui-col-xs-8 zjhm"></td>
+									</tr>
+									<tr>
+										<td class="mui-col-sm-3 mui-col-xs-3">民族</td>
+										<td class="mui-col-sm-9 mui-col-xs-9 mz"></td>
+									</tr>
+
+									<tr>
+										<td class="mui-col-sm-4 mui-col-xs-4">原政治面貌</td>
+										<td class="mui-col-sm-8 mui-col-xs-8 zzmm"></td>
+									</tr>
+
+									<tr>
+										<td class="mui-col-sm-4 mui-col-xs-4">婚姻状况</td>
+										<td class="mui-col-sm-8 mui-col-xs-8 hyzk"></td>
+									</tr>
+
+									<tr>
+										<td class="mui-col-sm-4 mui-col-xs-4">入监日期</td>
+										<td class="mui-col-sm-8 mui-col-xs-8 rjrq"></td>
+									</tr>
+
+									<tr>
+										<td class="mui-col-sm-4 mui-col-xs-4">收押类型</td>
+										<td class="mui-col-sm-8 mui-col-xs-8 sylx"></td>
+									</tr>
+									<tr>
+										<td class="mui-col-sm-3 mui-col-xs-3">监所类型</td>
+										<td class="mui-col-sm-9 mui-col-xs-9 jslx"></td>
+									</tr>
+
+									<tr>
+										<td class="mui-col-sm-4 mui-col-xs-4">所在监所</td>
+										<td class="mui-col-sm-8 mui-col-xs-8 szjy"></td>
+									</tr>
+
+									<tr>
+										<td class="mui-col-sm-4 mui-col-xs-4">籍贯</td>
+										<td class="mui-col-sm-8 mui-col-xs-8 jg"></td>
+									</tr>
+
+									<tr>
+										<td class="mui-col-sm-4 mui-col-xs-4">户口类型</td>
+										<td class="mui-col-sm-8 mui-col-xs-8 hklx"></td>
+									</tr>
+
+									<tr>
+										<td class="mui-col-sm-4 mui-col-xs-4">户籍地址</td>
+										<td class="mui-col-sm-8 mui-col-xs-8 hjdxx"></td>
+									</tr>
+									<tr>
+										<td class="mui-col-sm-4 mui-col-xs-4">家庭地址</td>
+										<td class="mui-col-sm-8 mui-col-xs-8 jtdxx"></td>
+									</tr>
+									<tr>
+										<td class="mui-col-sm-3 mui-col-xs-3">罪名</td>
+										<td class="mui-col-sm-9 mui-col-xs-9 zm"></td>
+									</tr>
+
+									<tr>
+										<td class="mui-col-sm-4 mui-col-xs-4">刑期</td>
+										<td class="mui-col-sm-8 mui-col-xs-8 xq"></td>
+									</tr>
+
+									<tr>
+										<td class="mui-col-sm-4 mui-col-xs-4">逮捕日期</td>
+										<td class="mui-col-sm-8 mui-col-xs-8 dbrq"></td>
+									</tr>
+
+									<tr>
+										<td class="mui-col-sm-4 mui-col-xs-4">逮捕机关</td>
+										<td class="mui-col-sm-8 mui-col-xs-8 dbjg"></td>
+									</tr>
+
+									<tr>
+										<td class="mui-col-sm-4 mui-col-xs-4">刑期起日</td>
+										<td class="mui-col-sm-8 mui-col-xs-8 xqqr"></td>
+									</tr>
+									<tr>
+										<td class="mui-col-sm-4 mui-col-xs-4">刑期止日</td>
+										<td class="mui-col-sm-8 mui-col-xs-8 xqzr"></td>
+									</tr>
+									<tr>
+										<td class="mui-col-sm-4 mui-col-xs-4">附加刑</td>
+										<td class="mui-col-sm-8 mui-col-xs-8 fjx"></td>
+									</tr>
+									<tr>
+										<td class="mui-col-sm-4 mui-col-xs-4">案犯类型 </td>
+										<td class="mui-col-sm-8 mui-col-xs-8 aflx"></td>
+									</tr>
+								</table>
+							</div>
+						</div>
+					</div>
+				</div>
+	</body>
+	<script type="text/javascript" src="../js/mui.min.js"></script>
+	<script type="text/javascript" src="../js/jquery.min.js"></script>
+	<script type="text/javascript" src="../js/common.js"></script>
+	<script type="text/javascript">
+		mui.init();
+		mui.plusReady(function() {
+			var param = {};
+			var self = plus.webview.currentWebview();
+			var ptype = self.ptype;
+			if(ptype == '01'){
+				param.tableName = 'jy_zfxx_all';
+			}else if(ptype == '02'){
+				param.tableName = 'kss_zfxx_all';
+			}else if(ptype == '05'){
+				param.tableName = 'sqjz_zfxx_all';
+			}
+			param.zfbh = self.zfbh;
+			param.szjy = self.szjy;
+			$.ajax({
+				url: serverURL + 'JyZfxxAll/queryFxryDetail.do',
+				type: 'post',
+				data: param,
+				dataType: 'json',
+				success: function(result) {
+					if(result.ret == 0) {
+						//基本信息
+						var data = result.content;
+						$('.zfxm').html(data.zfxm);
+						$('.xb').html(data.xb);
+						$('.zfbh').html(data.zfbh);
+						$('.csrq').html(data.csrq);
+						$('.zjhm').html(data.zjhm);
+						$('.mz').html(data.mz);
+						$('.zzmm').html(data.zzmm);
+						$('.hyzk').html(data.hyzk);
+						$('.rjrq').html(data.rjrq);
+						$('.sylx').html(data.sylx);
+						if(data.ptype == '01') {
+							$('.jslx').html('监狱');
+						} else if(data.ptype == '02') {
+							$('.jslx').html('看守所');
+						} else if(data.ptype == '05') {
+							$('.jslx').html('社区矫正');
+						}
+						$('.szjy').html(data.szjy);
+						$('.jg').html(data.jgName);
+						$('.hklx').html(data.hklx);
+						$('.hjdxx').html(data.hjdxx);
+						$('.jtdxx').html(data.jtdxx);
+						$('.zm').html(data.zm);
+						$('.xq').html(data.xq);
+						$('.dbrq').html(data.dbrq);
+						$('.dbjg').html(data.dbjg);
+						$('.xqqr').html(data.xqqr);
+						$('.xqzr').html(data.xqzr);
+						$('.fjx').html(data.fjx);
+						$('.aflx').html(data.aflx);
+					}
+				}
+			});
+		});
+
+		(function($) {
+			$('#scroll').scroll({
+				indicators: true //是否显示滚动条
+			});
+			var segmentedControl = document.getElementById('segmentedControl');
+			$('.mui-input-group').on('change', 'input', function() {
+				if(this.checked) {
+					var styleEl = document.querySelector('input[name="style"]:checked');
+					var colorEl = document.querySelector('input[name="color"]:checked');
+					if(styleEl && colorEl) {
+						var style = styleEl.value;
+						var color = colorEl.value;
+						segmentedControl.className = 'mui-segmented-control' + (style ? (' mui-segmented-control-' + style) : '') + ' mui-segmented-control-' + color;
+					}
+				}
+			});
+		})(mui);
+	</script>
+
+</html>

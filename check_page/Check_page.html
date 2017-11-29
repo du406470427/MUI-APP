@@ -1,0 +1,269 @@
+<!doctype html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<link href="../css/mui.min.css" rel="stylesheet" />
+	</head>
+	<style>
+		html,
+		body {
+			background-color: #fff;
+		}
+		
+		.mui-title {
+			color: white;
+			font: bold 18px/ 45px "微软雅黑";
+		}
+		
+		.mui-bar-nav {
+			background-color: #0b84ff;
+		}
+		
+		.mui-return {
+			color: #fff;
+			font: bold 17px/ 45px "微软雅黑";
+			margin-left: -5px;
+		}
+		
+		.mui-bar .mui-icon {
+			padding-top: 0;
+		}
+		
+		.mui-bar-nav.mui-bar .mui-icon {
+			padding-left: 0;
+		}
+		
+		.mui-icon-left-nav {
+			color: white;
+		}
+		
+		h3 {
+			text-align: center;
+			font: bold 17px/ 25px "微软雅黑";
+			margin-bottom: 0;
+		}
+		
+		.mui-table {
+			width: 100%;
+		}
+		
+		.mui-table tr {
+			height: 60px;
+		}
+		
+		.mui-table tr:nth-child(even) {
+			background-color: #daf0ff;
+		}
+		
+		.mui-table tr td {
+			text-align: center;
+			font: bold 13px/20px "微软雅黑";
+		}
+		
+		.pagination {
+			margin: 0 auto;
+			text-align: center;
+			margin-bottom: 10px;
+		}
+		
+		.page_div a {
+			min-width: 30px;
+			height: 28px;
+			border: 1px solid #EFEFEF;
+			text-align: center;
+			cursor: pointer;
+			margin: 0 2px;
+			line-height: 28px;
+			color: #666666;
+			font-size: 13px;
+			display: inline-block;
+			border-radius: 14px;
+		}
+		
+		#prePage,
+		#nextPage {
+			width: 70px;
+			color: #0073A9;
+			border: 1px solid #EFEFEF!important;
+		}
+		
+		.page_div .current {
+			background-color: #0073A9;
+			border-color: #0073A9;
+			color: #FFFFFF;
+		}
+		
+		.totalPages {
+			display: block;
+			width: 100%;
+			height: 30px;
+			margin: 0 auto;
+			font: bold 14px/30px "微软雅黑";
+			margin-bottom: 0;
+		}
+		
+		.totalPages span,
+		.totalSize span {
+			color: #0073A9;
+			margin: 0 5px;
+		}
+		
+		.mui-content {
+			background-color: #fff;
+		}
+	</style>
+
+	<body>
+		<header class="mui-bar mui-bar-nav">
+			<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-lef">
+				<span class="mui-return">返回</span>
+			</a>
+			<h1 class="mui-title">核查列表</h1>
+		</header>
+
+		<div class="mui-content">
+			<div class="mui-card">
+				<h3>一共查询到<span id="totalNum" style="color: red; margin-left: 5px; margin-right: 5px;"></span>条信息</h3>
+				<div class="mui-card" style="margin-top: 0;">
+					<table class="mui-table" id="tb_list">
+					</table>
+				</div>
+				<div class="pagination">
+					<div value="1 0"></div>
+					<div id="page" class="page_div"></div>
+				</div>
+			</div>
+		</div>
+	</body>
+	<script src="../js/mui.min.js"></script>
+	<script type="text/javascript" src="../js/jquery.min.js"></script>
+	<script type="text/javascript" src="../js/paging.js"></script>
+	<script type="text/javascript" src="../js/common.js"></script>
+	<script type="text/javascript">
+		mui.init();
+
+		mui.plusReady(function() {
+			window.addEventListener('AddNew',function(){
+				plus.webview.getWebviewById('Check_page.html').reload();
+			});
+			var fkDept = plus.storage.getItem('fkDept');
+			var village = plus.storage.getItem('village');
+			var data = {};
+			data.pageNum = 1;
+			data.pageSize = 10;
+			if(village == 4) { //乡镇应该是没有未交接的
+				data.xz = fkDept;
+			} else {
+				data.hjdqh = fkDept;
+			}
+			$.ajax({
+				url: serverURL + 'JyZfxxAll/noCheckInfo.do',
+				type: 'post',
+				data: data,
+				dataType: 'json',
+				success: function(result) {
+					$('#totalNum').html(result.total);
+					var list = result.content;
+					var totalRecord = $('#tb_list');
+					totalRecord.empty();
+					var recordLi;
+					if(list) {
+						for(var i = 0; i < list.length; i++) {
+							var data = list[i];
+							var rjrq;
+							if(data.rjrq) {
+								rjrq = data.rjrq;
+							}
+							recordTr = '<tr class="detail">' +
+								'<td class="mui-col-sm-3 mui-col-xs-3">' + rjrq + '</td>' +
+								'<td class="mui-col-sm-3 mui-col-xs-3">' + data.zfxm + '</td>' +
+								'<td class="mui-col-sm-3 mui-col-xs-3">' + data.szjy + '</td>' +
+								'<td class="mui-col-sm-3 mui-col-xs-3">' +
+								'<a onclick="person_info()">详细' +
+								'<input type="hidden" value="' + data.zfbh + '">' +
+								'<input type="hidden" value="' + data.ptype + '">' +
+								'</a>' +
+								'</td>' +
+								'</tr>';
+							totalRecord.append(recordTr);
+						}
+					} else {
+						totalRecord.append("无信息");
+					}
+					$("#page").paging({
+						pageNo: 1,
+						totalPage: Math.ceil(result.total / 10),
+						totalSize: result.total,
+						callback: function(num) {
+							var param = {};
+							param.pageNum = num;
+							param.pageSize = 10;
+							if(village == 4) {
+								param.xz = fkDept;
+							} else {
+								param.hjdqh = fkDept;
+							}
+							$.ajax({
+								url: serverURL + 'JyZfxxAll/noCheckInfo.do',
+								type: 'post',
+								data: param,
+								dataType: 'json',
+								success: function(result) {
+									var list = result.content;
+									var totalRecord = $('#tb_list');
+									totalRecord.empty();
+									var recordTr;
+									if(list) {
+										for(var i = 0; i < list.length; i++) {
+											var data = list[i];
+											var rjrq;
+											if(data.rjrq) {
+												rjrq = data.rjrq;
+											}
+											recordTr = '<tr class="detail">' +
+												'<td class="mui-col-sm-3 mui-col-xs-3">' + rjrq + '</td>' +
+												'<td class="mui-col-sm-3 mui-col-xs-3">' + data.zfxm + '</td>' +
+												'<td class="mui-col-sm-3 mui-col-xs-3">' + data.szjy + '</td>' +
+												'<td class="mui-col-sm-3 mui-col-xs-3">' +
+												'<a onclick="person_info()">详细' +
+												'<input type="hidden" value="' + data.zfbh + '">' +
+												'<input type="hidden" value="' + data.ptype + '">' +
+												'</a>' +
+												'</td>' +
+												'</tr>';
+											totalRecord.append(recordTr);
+										}
+									} else {
+										totalRecord.append("无信息");
+									}
+								}
+							});
+						}
+					});
+				},
+				complete: function() {},
+				error: function() {
+					alert("错误");
+				}
+			});
+		});
+		function person_info() {
+			$('.detail').unbind('click');
+			$('.detail').bind('click', function() {
+				mui.openWindow({
+					url: 'Check_page_info.html',
+					id: 'Check_page_info.html',
+					extras: {
+						ptype: $(this).find("input:eq(1)").val(),
+						zfbh: $(this).find("input:eq(0)").val(), //选当前tr下的第一个input标签的值
+						szjy: $(this).find('td:eq(2)').html() //选择 当前tr下的 第三个td  值
+					}
+				});
+			});
+		}
+	</script>
+
+</html>

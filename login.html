@@ -1,0 +1,288 @@
+<!doctype html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<link href="css/mui.min.css" rel="stylesheet" />
+	</head>
+	<style>
+		body {
+			background: url(img/login_bg.jpg) no-repeat;
+			background-size: cover;
+		}
+		
+		.area {
+			margin: 20px auto 0px auto;
+		}
+		
+		.mui-content {
+			width: 100%;
+			height: 100%;
+			margin: 0 auto;
+			text-align: center;
+			margin-top: 18%;
+			background: none;
+			color: white;
+		}
+		
+		.mui-input-row {
+			width: 100%;
+			font: bold 13px/20px "微软雅黑";
+			text-align: left;
+		}
+		
+		.mui-input-row .mui-switch {
+			margin-right: 2px;
+		}
+		
+		.mui-switch:before {
+			right: 2px;
+		}
+		
+		.mui-switch.mui-active:before {
+			left: 7px;
+		}
+		
+		.mui-switch {
+			width: 60px;
+			border: 2px solid #fff;
+		}
+		
+		.mui-input-group {
+			margin-top: 10px;
+			width: 80%;
+			margin: 10px auto auto auto;
+			text-align: center;
+			border-radius: 20px;
+			background-color: rgba(0, 0, 0, 0.1);
+		}
+		
+		.mui-input-row .mui-input-clear~.mui-icon-clear,
+		.mui-input-row .mui-input-password~.mui-icon-eye,
+		.mui-input-row .mui-input-speech~.mui-icon-speech {
+			color: #fff;
+		}
+		
+		.mui-input-row .mui-input-clear~.mui-icon-clear.mui-active,
+		.mui-input-row .mui-input-password~.mui-icon-eye.mui-active,
+		.mui-input-row .mui-input-speech~.mui-icon-speech.mui-active {
+			color: #2AC845;
+		}
+		
+		::-webkit-input-placeholder {
+			/* WebKit browsers */
+			color: #fff;
+			font: bold 13px/25px "微软雅黑";
+			text-align: left;
+		}
+		
+		:-moz-placeholder {
+			/* Mozilla Firefox 4 to 18 */
+			color: #fff;
+			font: bold 13px/25px "微软雅黑";
+			text-align: left;
+		}
+		
+		::-moz-placeholder {
+			/* Mozilla Firefox 19+ */
+			color: #fff;
+			font: bold 13px/25px "微软雅黑";
+			text-align: left;
+		}
+		
+		:-ms-input-placeholder {
+			/* Internet Explorer 10+ */
+			color: #fff;
+			font: bold 13px/25px "微软雅黑";
+			text-align: left;
+		}
+		
+		.mui-input-group:first-child {
+			margin-top: 20px;
+		}
+		
+		.mui-input-group label {
+			width: 60px;
+			color: ;
+		}
+		
+		.mui-input-row label~input,
+		.mui-input-row label~select,
+		.mui-input-row label~textarea {
+			width: 78%;
+		}
+		
+		.mui-content-padded {
+			margin-top: 25px;
+		}
+		
+		.mui-btn {
+			padding: 7px;
+			width: 84%;
+			margin: 0 auto;
+			text-align: center;
+			border-radius: 20px;
+			font: bold 13px/25px "微软雅黑";
+			text-align: center;
+			color: white;
+			background-color: rgba(0, 0, 0, 0.1);
+			border: 0;
+		}
+		
+		.link-area {
+			display: block;
+			margin-top: 25px;
+			text-align: center;
+			font: bold 13px/25px "微软雅黑";
+		}
+		
+		.link-area a {
+			color: #fff;
+		}
+		
+		.spliter {
+			color: #bbb;
+			padding: 0px 8px;
+		}
+		
+		.mui-title {
+			color: white;
+			font: bold 18px/45px "微软雅黑";
+		}
+		
+		.mui-bar-nav {
+			background-color: #0b84ff;
+		}
+		
+		.mui-input-group:before {
+			height: 0;
+		}
+		
+		.mui-input-group:after {
+			height: 0;
+		}
+		
+		.mui-input-group .mui-input-row:after {
+			height: 0;
+		}
+		
+		.mui-icon {
+			line-height: 0.8;
+		}
+	</style>
+
+	<body>
+		<div class="mui-content">
+
+			<div>
+				<img src="img/sfhb.png" width="100px" height="100px" style="margin: 0 auto; text-align: center;" />
+				<p style="font: bold 16px/25px '微软雅黑'; color: #fff;">安置帮教</p>
+			</div>
+
+			<form id='login-form' class="mui-input-group">
+				<div class="mui-input-row">
+					<label><span class="mui-icon iconfont icon-jieshouren" style="line-height: 1px"></span></label>
+					<input id='account' type="text" class="mui-input-clear mui-input" placeholder="请输入账号">
+				</div>
+			</form>
+
+			<form id='login-form' class="mui-input-group">
+				<div class="mui-input-row">
+					<label><span class="mui-icon mui-icon-locked"></span></label>
+					<input id='password' type="password" class="mui-input mui-input-password" placeholder="请输入密码">
+				</div>
+			</form>
+
+			<form id='login-form' class="mui-input-group">
+				<div class="mui-input-row">
+					<span style="line-height: 40px; margin-left: 5px;">自动登录</span>
+					<label><span class="mui-icon mui-icon-gear"></span></label>
+					<div id="autoLogin" class="mui-switch">
+						<div class="mui-switch-handle"></div>
+					</div>
+				</div>
+			</form>
+
+			<div class="mui-content-padded">
+				<button id='login' class="mui-btn mui-btn-block mui-btn-primary">登录</button>
+				<div class="link-area">
+					<a id='reg'>注册账号</a> <span class="spliter">|</span>
+					<a id='forgetPassword'>忘记密码</a>
+				</div>
+			</div>
+		</div>
+
+	</body>
+	<script src="js/mui.min.js"></script>
+	<script type="text/javascript" src="js/jquery.min.js"></script>
+	<script type="text/javascript" src="js/common.js"></script>
+	<script type="text/javascript">
+		mui.init()
+		$('#login').click(function() {
+			login();
+		});
+
+		function login() {
+			var param = {};
+			param.empNo = $('#account').val().trim();
+			param.password = $('#password').val().trim();
+			param.fkDeptType = '0';
+			$.ajax({
+				url: serverURL + "user/login.do",
+				type: "POST",
+				data: param,
+				dataType: "JSON",
+				success: function(data) {
+					if(data.ret == -7) {
+						alert("用户名或密码不能为空");
+						return;
+					}
+					if(data.ret == -11) {
+						alert("用户名或密码错误");
+						return;
+					}
+					if(data.ret == -9) {
+						alert("数据库异常");
+						return;
+					}
+					mui.plusReady(function() {
+						//存值   每个页面都能拿到
+						plus.storage.setItem('deptName', data.content.deptName);
+						plus.storage.setItem('deptNo', data.content.deptNo);
+						plus.storage.setItem('village', data.content.village.toString());
+						plus.storage.setItem('empno', data.content.empno);
+						plus.storage.setItem('fkDept', data.content.fkDept);
+						plus.storage.setItem('fkDeptType', data.content.fkDeptType);
+						plus.storage.setItem('no', data.content.no);
+						//获取值
+						var deptNo = plus.storage.getItem('deptNo');
+						mui.openWindow({
+							url: 'main_page/main1.html',
+							id: 'main/main1.html',
+							styles: {
+								top: '0px', //新页面顶部位置
+								bottom: '0px', //新页面底部位置
+							},
+							show: {
+								autoShow: true,
+								duration: 300,
+							},
+							waiting: {
+								autoShow: true, //自动显示等待框，默认为true
+								title: '正在加载...',
+								duration: 100
+							}
+						})
+					})
+				},
+				complete: function() {},
+				error: function() {
+					alert("错误");
+				}
+			});
+		}
+	</script>
+
+</html>
